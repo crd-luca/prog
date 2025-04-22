@@ -1,0 +1,32 @@
+<h2>Categorie</h2>
+<div class="categorie ">
+  <!-- Creazione dei bottoni per ciascuna categoria -->
+  <p-button severity="danger"
+    *ngFor="let cat of categorie"
+
+    (click)="caricaProdotti(cat.idCategoria)"
+    class="categorie-button"
+  >
+    {{ cat.nomeCategoria }}
+  </p-button>
+
+</div>
+
+<!-- Se ci sono prodotti, li visualizziamo -->
+<div *ngIf="prodotti.length > 0" >
+  <h3>Prodotti della categoria: {{ selectedCategoria?.nomeCategoria }}</h3>
+  <div >
+    <p-card *ngFor="let prodotto of prodotti" class="m-2 ">
+      <ng-template pTemplate="header">
+        <h3>{{ prodotto.nome }}</h3>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <p><strong>Descrizione:</strong> {{ prodotto.descrizione }}</p>
+        <p><strong>Prezzo:</strong> {{ prodotto.prezzo | currency }}</p>
+      </ng-template>
+    </p-card>
+  </div>
+</div>
+
+
+<
