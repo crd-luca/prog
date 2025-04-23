@@ -1,0 +1,16 @@
+<p-button label="Carica Ordini" icon="pi pi-refresh" (click)="caricaTuttiGliOrdini()"></p-button>
+
+<div *ngFor="let ordine of ordini">
+  <p-card header="Ordine #{{ ordine.idOrdine }}">
+    <div>
+      <strong>Data Ordine:</strong> {{ ordine.dataOrdine | date: 'dd/MM/yyyy' }} <!-- Formatta la data -->
+    </div>
+    <div *ngFor="let prodotto of ordine.prodotti">
+      <p>{{ prodotto.nome }} - {{ prodotto.prezzo | currency:'EUR':'symbol':'1.2-2'  }}</p>
+    </div>
+    <p>Total: {{ ordine.totale | currency: 'EUR':'symbol':'1.2-2'  }}</p>
+
+    <button (click)="eliminaOrdine(ordine.idOrdine)" class="btn btn-danger">Elimina Ordine</button>
+
+  </p-card>
+</div>
